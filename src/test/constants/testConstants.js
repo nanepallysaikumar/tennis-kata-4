@@ -4,6 +4,8 @@ const testConstants = {
   FIFTEEN_LOVE: "Fifteen-Love",
   PLAYER_ONE: "Player One",
   THIRTY_LOVE: "Thirty-Love",
+  ONE_TIME: 1,
+  TWO_TIMES: 2,
 };
 
 export { testConstants };
