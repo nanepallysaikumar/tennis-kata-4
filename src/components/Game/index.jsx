@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   applicationConstants,
   score,
+  scoreLookUp,
 } from "../../constants/applicationConstants";
 import "./index.css";
 
@@ -24,13 +25,14 @@ const Game = () => {
     setPlayerOneScore(playerOneScore + POINT_ONE);
   };
 
+  const isPlayerOneScoreBetweenOneAndThree = () => {
+    return playerOneScore >= POINT_ONE && playerOneScore <= POINT_THREE;
+  };
+
   const calculateGameScore = () => {
-    if (playerOneScore === POINT_ONE) {
-      setGameScore(FIFTEEN_LOVE);
-    } else if (playerOneScore === POINT_TWO) {
-      setGameScore(THIRTY_LOVE);
-    } else if (playerOneScore === POINT_THREE) {
-      setGameScore(FORTY_LOVE);
+    if (isPlayerOneScoreBetweenOneAndThree()) {
+      const score = `${scoreLookUp[playerOneScore]}-Love`;
+      setGameScore(score);
     }
   };
 
