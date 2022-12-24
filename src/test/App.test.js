@@ -12,6 +12,8 @@ const {
   ONE_TIME,
   TWO_TIMES,
   THREE_TIMES,
+  PLAYER_TWO,
+  LOVE_FIFTEEN,
 } = testConstants;
 
 beforeEach(() => {
@@ -23,8 +25,16 @@ const gameScoreShouldBe = (expected) => {
 };
 
 const playerOneScores = (times) => {
+  playerScores(times, PLAYER_ONE);
+};
+
+const playerTwoScores = (times) => {
+  playerScores(times, PLAYER_TWO);
+};
+
+const playerScores = (times, playerName) => {
   for (let count = 0; count < times; count++) {
-    fireEvent.click(screen.getByTestId(PLAYER_ONE));
+    fireEvent.click(screen.getByTestId(playerName));
   }
 };
 
@@ -48,4 +58,10 @@ test("When the running point of player one is 3 then the running score should be
   playerOneScores(THREE_TIMES);
 
   gameScoreShouldBe(FORTY_LOVE);
+});
+
+test("When the running point of player one is 0 and the running point of player two is 1 then the running score should be Love-Fifteen", () => {
+  playerTwoScores(ONE_TIME);
+
+  gameScoreShouldBe(LOVE_FIFTEEN);
 });

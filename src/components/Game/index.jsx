@@ -14,15 +14,19 @@ const {
   POINT_ONE,
   POINT_TWO,
   POINT_THREE,
+  ZERO_POINT,
 } = applicationConstants;
-const { LOVE_ALL, FIFTEEN_LOVE, THIRTY_LOVE, FORTY_LOVE } = score;
+const { LOVE_ALL, FIFTEEN_LOVE, THIRTY_LOVE, FORTY_LOVE, LOVE_FIFTEEN } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
   const [playerOneScore, setPlayerOneScore] = useState(0);
+  const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
-  const incrementScore = () => {
-    setPlayerOneScore(playerOneScore + POINT_ONE);
+  const incrementScore = (player) => {
+    player === PLAYER_ONE
+      ? setPlayerOneScore(playerOneScore + POINT_ONE)
+      : setPlayerTwoScore(playerTwoScore + POINT_ONE);
   };
 
   const isPlayerOneScoreBetweenOneAndThree = () => {
@@ -30,24 +34,34 @@ const Game = () => {
   };
 
   const calculateGameScore = () => {
-    if (isPlayerOneScoreBetweenOneAndThree()) {
+    if (isPlayerOneScoreBetweenOneAndThree() && playerTwoScore === ZERO_POINT) {
       const score = `${scoreLookUp[playerOneScore]}-Love`;
       setGameScore(score);
+    } else if (playerOneScore === ZERO_POINT && playerTwoScore === POINT_ONE) {
+      setGameScore(LOVE_FIFTEEN);
     }
   };
 
   useEffect(() => {
     calculateGameScore();
-  }, [playerOneScore]);
+  }, [playerOneScore, playerTwoScore]);
 
   return (
     <React.Fragment>
       <h1>{TITLE}</h1>
       <p data-testid={GAME_SCORE}>{gameScore}</p>
-      <button data-testid={PLAYER_ONE} onClick={incrementScore}>
+      <button
+        data-testid={PLAYER_ONE}
+        onClick={() => incrementScore(PLAYER_ONE)}
+      >
         {PLAYER_ONE}
       </button>
-      <button>{PLAYER_TWO}</button>
+      <button
+        data-testid={PLAYER_TWO}
+        onClick={() => incrementScore(PLAYER_TWO)}
+      >
+        {PLAYER_TWO}
+      </button>
     </React.Fragment>
   );
 };

@@ -8,6 +8,8 @@ const testConstants = {
   ONE_TIME: 1,
   TWO_TIMES: 2,
   THREE_TIMES: 3,
+  PLAYER_TWO: "Player Two",
+  LOVE_FIFTEEN: "Love-Fifteen",
 };
 
 export { testConstants };
