@@ -6,17 +6,9 @@ import {
 } from "../../constants/applicationConstants";
 import "./index.css";
 
-const {
-  GAME_SCORE,
-  PLAYER_ONE,
-  PLAYER_TWO,
-  TITLE,
-  POINT_ONE,
-  POINT_TWO,
-  POINT_THREE,
-  ZERO_POINT,
-} = applicationConstants;
-const { LOVE_ALL, FIFTEEN_THIRTY } = score;
+const { GAME_SCORE, PLAYER_ONE, PLAYER_TWO, TITLE, POINT_ONE, POINT_THREE } =
+  applicationConstants;
+const { LOVE_ALL } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -29,12 +21,8 @@ const Game = () => {
       : setPlayerTwoScore(playerTwoScore + POINT_ONE);
   };
 
-  const isPlayerOneScoresNotMoreThanThree = () => {
-    return playerOneScore <= POINT_THREE;
-  };
-
-  const isPlayerTwoScoresNotMoreThanThree = () => {
-    return playerTwoScore <= POINT_THREE;
+  const isPlayersScoresNotMoreThanThreePoints = () => {
+    return playerOneScore <= POINT_THREE && playerTwoScore <= POINT_THREE;
   };
 
   const updateGameScore = () => {
@@ -42,14 +30,8 @@ const Game = () => {
   };
 
   const calculateGameScore = () => {
-    if (isPlayerOneScoresNotMoreThanThree() && playerTwoScore === ZERO_POINT) {
-      return `${scoreLookUp[playerOneScore]}-Love`;
-    }
-    if (isPlayerTwoScoresNotMoreThanThree() && playerOneScore === ZERO_POINT) {
-      return `Love-${scoreLookUp[playerTwoScore]}`;
-    }
-    if (playerOneScore === POINT_ONE && playerTwoScore === POINT_TWO) {
-      return FIFTEEN_THIRTY;
+    if (isPlayersScoresNotMoreThanThreePoints()) {
+      return `${scoreLookUp[playerOneScore]}-${scoreLookUp[playerTwoScore]}`;
     }
   };
 
