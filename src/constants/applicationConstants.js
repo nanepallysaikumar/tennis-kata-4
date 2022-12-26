@@ -7,6 +7,7 @@ const applicationConstants = {
   POINT_ONE: 1,
   POINT_TWO: 2,
   POINT_THREE: 3,
+  POINT_FOUR: 4,
   ALL: "-All",
   HYPHEN: "-",
 };
@@ -14,6 +15,7 @@ const applicationConstants = {
 const score = {
   LOVE_ALL: "Love-All",
   DEUCE: "Deuce",
+  PLAYER_ONE_WIN: "Player One Win",
 };
 
 const scoreLookUp = {

@@ -6,12 +6,14 @@ import {
 import { bothScoredPointOneOrTwo } from "./rules/bothScoredSame";
 import { differentScoresBetweenOneAndThree } from "./rules/differentScore";
 import { deuce } from "./rules/deuce";
+import { playerWins } from "./rules/win";
 import "./index.css";
 
 const rules = [
   deuce,
   bothScoredPointOneOrTwo,
   differentScoresBetweenOneAndThree,
+  playerWins,
 ];
 
 const { GAME_SCORE, PLAYER_ONE, PLAYER_TWO, TITLE, POINT_ONE } =
