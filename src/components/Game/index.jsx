@@ -8,7 +8,7 @@ import "./index.css";
 
 const { GAME_SCORE, PLAYER_ONE, PLAYER_TWO, TITLE, POINT_ONE, POINT_THREE } =
   applicationConstants;
-const { LOVE_ALL } = score;
+const { LOVE_ALL, FIFTEEN_ALL } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -25,11 +25,19 @@ const Game = () => {
     return playerOneScore <= POINT_THREE && playerTwoScore <= POINT_THREE;
   };
 
+  const hasBothPlayerScoresOnePoint = () => {
+    return playerOneScore === POINT_ONE && playerTwoScore === POINT_ONE;
+  };
+
   const updateGameScore = () => {
     setGameScore(calculateGameScore());
   };
 
   const calculateGameScore = () => {
+    if (hasBothPlayerScoresOnePoint()) {
+      return FIFTEEN_ALL;
+    }
+
     if (isPlayersScoresNotMoreThanThreePoints()) {
       return `${scoreLookUp[playerOneScore]}-${scoreLookUp[playerTwoScore]}`;
     }
