@@ -16,6 +16,7 @@ const score = {
   FORTY_LOVE: "Forty-Love",
   LOVE_FIFTEEN: "Love-Fifteen",
   LOVE_THIRTY: "Love-Thirty",
+  LOVE_FORTY: "Love-Forty",
 };
 
 const scoreLookUp = {

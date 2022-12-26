@@ -23,6 +23,7 @@ const {
   FORTY_LOVE,
   LOVE_FIFTEEN,
   LOVE_THIRTY,
+  LOVE_FORTY,
 } = score;
 
 const Game = () => {
@@ -48,6 +49,11 @@ const Game = () => {
       setGameScore(LOVE_FIFTEEN);
     } else if (playerOneScore === ZERO_POINT && playerTwoScore === POINT_TWO) {
       setGameScore(LOVE_THIRTY);
+    } else if (
+      playerOneScore === ZERO_POINT &&
+      playerTwoScore === POINT_THREE
+    ) {
+      setGameScore(LOVE_FORTY);
     }
   };
 
