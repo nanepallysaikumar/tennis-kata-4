@@ -12,19 +12,10 @@ const {
   PLAYER_TWO,
   TITLE,
   POINT_ONE,
-  POINT_TWO,
   POINT_THREE,
   ZERO_POINT,
 } = applicationConstants;
-const {
-  LOVE_ALL,
-  FIFTEEN_LOVE,
-  THIRTY_LOVE,
-  FORTY_LOVE,
-  LOVE_FIFTEEN,
-  LOVE_THIRTY,
-  LOVE_FORTY,
-} = score;
+const { LOVE_ALL } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -37,28 +28,35 @@ const Game = () => {
       : setPlayerTwoScore(playerTwoScore + POINT_ONE);
   };
 
-  const isPlayerOneScoreBetweenOneAndThree = () => {
-    return playerOneScore >= POINT_ONE && playerOneScore <= POINT_THREE;
+  const isPlayerOneScoresNotMoreThanThree = () => {
+    return playerOneScore <= POINT_THREE;
+  };
+
+  const isPlayerTwoScoresNotMoreThanThree = () => {
+    return playerTwoScore <= POINT_THREE;
+  };
+
+  const updateGameScore = () => {
+    setGameScore(calculateGameScore());
   };
 
   const calculateGameScore = () => {
-    if (isPlayerOneScoreBetweenOneAndThree() && playerTwoScore === ZERO_POINT) {
-      const score = `${scoreLookUp[playerOneScore]}-Love`;
-      setGameScore(score);
-    } else if (playerOneScore === ZERO_POINT && playerTwoScore === POINT_ONE) {
-      setGameScore(LOVE_FIFTEEN);
-    } else if (playerOneScore === ZERO_POINT && playerTwoScore === POINT_TWO) {
-      setGameScore(LOVE_THIRTY);
-    } else if (
-      playerOneScore === ZERO_POINT &&
-      playerTwoScore === POINT_THREE
-    ) {
-      setGameScore(LOVE_FORTY);
+    if (isPlayerOneScoresNotMoreThanThree() && playerTwoScore === ZERO_POINT) {
+      return `${scoreLookUp[playerOneScore]}-Love`;
+    }
+    if (isPlayerTwoScoresNotMoreThanThree() && playerOneScore === ZERO_POINT) {
+      return `Love-${scoreLookUp[playerTwoScore]}`;
     }
   };
 
+  const isPlayerStartedScoring = () => {
+    return playerOneScore > 0 || playerTwoScore > 0;
+  };
+
   useEffect(() => {
-    calculateGameScore();
+    if (isPlayerStartedScoring()) {
+      updateGameScore();
+    }
   }, [playerOneScore, playerTwoScore]);
 
   return (
