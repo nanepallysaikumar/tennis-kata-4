@@ -5,12 +5,14 @@ const applicationConstants = {
   TITLE: "Tennis Game",
   ZERO_POINT: 0,
   POINT_ONE: 1,
+  POINT_TWO: 2,
   POINT_THREE: 3,
 };
 
 const score = {
   LOVE_ALL: "Love-All",
   FIFTEEN_ALL: "Fifteen-All",
+  THIRTY_ALL: "Thirty-All",
 };
 
 const scoreLookUp = {

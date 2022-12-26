@@ -6,9 +6,16 @@ import {
 } from "../../constants/applicationConstants";
 import "./index.css";
 
-const { GAME_SCORE, PLAYER_ONE, PLAYER_TWO, TITLE, POINT_ONE, POINT_THREE } =
-  applicationConstants;
-const { LOVE_ALL, FIFTEEN_ALL } = score;
+const {
+  GAME_SCORE,
+  PLAYER_ONE,
+  PLAYER_TWO,
+  TITLE,
+  POINT_ONE,
+  POINT_TWO,
+  POINT_THREE,
+} = applicationConstants;
+const { LOVE_ALL, FIFTEEN_ALL, THIRTY_ALL } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -29,6 +36,10 @@ const Game = () => {
     return playerOneScore === POINT_ONE && playerTwoScore === POINT_ONE;
   };
 
+  const hasBothPlayerScoresTwoPoints = () => {
+    return playerOneScore === POINT_TWO && playerTwoScore === POINT_TWO;
+  };
+
   const updateGameScore = () => {
     setGameScore(calculateGameScore());
   };
@@ -36,6 +47,10 @@ const Game = () => {
   const calculateGameScore = () => {
     if (hasBothPlayerScoresOnePoint()) {
       return FIFTEEN_ALL;
+    }
+
+    if (hasBothPlayerScoresTwoPoints()) {
+      return THIRTY_ALL;
     }
 
     if (isPlayersScoresNotMoreThanThreePoints()) {
