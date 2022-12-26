@@ -10,6 +10,7 @@ const testConstants = {
   THREE_TIMES: 3,
   PLAYER_TWO: "Player Two",
   LOVE_FIFTEEN: "Love-Fifteen",
+  LOVE_THIRTY: "Love-Thirty",
 };
 
 export { testConstants };
