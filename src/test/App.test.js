@@ -22,6 +22,7 @@ const {
   THIRTY_ALL,
   DEUCE,
   PLAYER_ONE_WIN,
+  PLAYER_TWO_WIN,
 } = testConstants;
 
 beforeEach(() => {
@@ -119,4 +120,11 @@ test("When the running point of player one is 4 and greater than player two scor
   playerTwoScores(TWO_TIMES);
 
   gameScoreShouldBe(PLAYER_ONE_WIN);
+});
+
+test("When the running point of player two is 4 and greater than player one score by 2 then declare player two as winner", () => {
+  playerOneScores(ONE_TIME);
+  playerTwoScores(FOUR_TIMES);
+
+  gameScoreShouldBe(PLAYER_TWO_WIN);
 });
