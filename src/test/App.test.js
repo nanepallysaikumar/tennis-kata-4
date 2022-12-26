@@ -128,3 +128,10 @@ test("When the running point of player two is 4 and greater than player one scor
 
   gameScoreShouldBe(PLAYER_TWO_WIN);
 });
+
+test("When the running point of both the players is same and greater than 3 then the running score should be Deuce", () => {
+  playerOneScores(FOUR_TIMES);
+  playerTwoScores(FOUR_TIMES);
+
+  gameScoreShouldBe(DEUCE);
+});

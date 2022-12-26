@@ -1,6 +1,6 @@
 import {
   hasPlayersScoresEqual,
-  isPlayerScoresThree,
+  isplayerScoresNotLessThanThree,
 } from "../../../utils/compareScores";
 import { score } from "../../../constants/applicationConstants";
 
@@ -9,7 +9,7 @@ const { DEUCE } = score;
 const isCriteriaMatched = (playerOneScore, playerTwoScore) => {
   return (
     hasPlayersScoresEqual(playerOneScore, playerTwoScore) &&
-    isPlayerScoresThree(playerOneScore)
+    isplayerScoresNotLessThanThree(playerOneScore)
   );
 };
 
