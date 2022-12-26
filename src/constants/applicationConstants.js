@@ -7,12 +7,12 @@ const applicationConstants = {
   POINT_ONE: 1,
   POINT_TWO: 2,
   POINT_THREE: 3,
+  ALL: "-All",
+  HYPHEN: "-",
 };
 
 const score = {
   LOVE_ALL: "Love-All",
-  FIFTEEN_ALL: "Fifteen-All",
-  THIRTY_ALL: "Thirty-All",
   DEUCE: "Deuce",
 };
 
