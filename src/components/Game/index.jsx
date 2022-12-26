@@ -7,6 +7,7 @@ import { bothScoredPointOneOrTwo } from "./rules/bothScoredSame";
 import { differentScoresBetweenOneAndThree } from "./rules/differentScore";
 import { deuce } from "./rules/deuce";
 import { playerWins } from "./rules/win";
+import { advantange } from "./rules/advantage";
 import "./index.css";
 
 const rules = [
@@ -14,6 +15,7 @@ const rules = [
   bothScoredPointOneOrTwo,
   differentScoresBetweenOneAndThree,
   playerWins,
+  advantange,
 ];
 
 const { GAME_SCORE, PLAYER_ONE, PLAYER_TWO, TITLE, POINT_ONE } =
