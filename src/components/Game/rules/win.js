@@ -1,5 +1,5 @@
 import {
-  isAnyPlayerScoresFour,
+  isAnyPlayerScoresMoreThanThree,
   isScoreDifferenceGreaterThanOne,
 } from "../../../utils/compareScores";
 import { score } from "../../../constants/applicationConstants";
@@ -8,7 +8,7 @@ const { PLAYER_ONE_WIN, PLAYER_TWO_WIN } = score;
 
 const isCriteriaMatched = (...playerScore) => {
   return (
-    isAnyPlayerScoresFour(...playerScore) &&
+    isAnyPlayerScoresMoreThanThree(...playerScore) &&
     isScoreDifferenceGreaterThanOne(...playerScore)
   );
 };

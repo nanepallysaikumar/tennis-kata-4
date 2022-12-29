@@ -1,7 +1,6 @@
 import { applicationConstants } from "../constants/applicationConstants";
 
-const { ZERO_POINT, POINT_ONE, POINT_TWO, POINT_THREE, POINT_FOUR } =
-  applicationConstants;
+const { ZERO_POINT, POINT_ONE, POINT_TWO, POINT_THREE } = applicationConstants;
 
 const hasPlayersScoresEqual = (playerOneScore, playerTwoScore) => {
   return playerOneScore === playerTwoScore;
@@ -38,13 +37,10 @@ const isplayerScoresNotLessThanThree = (playerScore) => {
   return playerScore >= POINT_THREE;
 };
 
-const isPlayerScoresFour = (playerScore) => {
-  return playerScore === POINT_FOUR;
-};
-
-const isAnyPlayerScoresFour = (playerOneScore, playerTwoScore) => {
+const isAnyPlayerScoresMoreThanThree = (playerOneScore, playerTwoScore) => {
   return (
-    isPlayerScoresFour(playerOneScore) || isPlayerScoresFour(playerTwoScore)
+    isplayerScoresMoreThanThree(playerOneScore) ||
+    isplayerScoresMoreThanThree(playerTwoScore)
   );
 };
 
@@ -65,7 +61,7 @@ const isScoreDifferenceGreaterThanOne = (playerOneScore, playerTwoScore) => {
 };
 
 const isScoreDifferenceIsOne = (playerOneScore, playerTwoScore) => {
-  return playerOneScore - playerTwoScore === POINT_ONE;
+  return Math.abs(playerOneScore - playerTwoScore) === POINT_ONE;
 };
 
 export {
@@ -76,7 +72,7 @@ export {
   hasplayersScoresNotMoreThanThree,
   hasBothPlayersScored,
   hasAnyPlayersScored,
-  isAnyPlayerScoresFour,
+  isAnyPlayerScoresMoreThanThree,
   isScoreDifferenceGreaterThanOne,
   isplayerScoresNotLessThanThree,
   isScoreDifferenceIsOne,

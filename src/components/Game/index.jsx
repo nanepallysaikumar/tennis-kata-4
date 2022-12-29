@@ -27,6 +27,7 @@ const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
   const [playerOneScore, setPlayerOneScore] = useState(0);
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const incrementScore = (player) => {
     player === PLAYER_ONE
@@ -56,17 +57,25 @@ const Game = () => {
     }
   }, [playerOneScore, playerTwoScore]);
 
+  useEffect(() => {
+    if (gameScore.indexOf("win") > 0) {
+      setGameOver(true);
+    }
+  }, [gameScore]);
+
   return (
     <React.Fragment>
       <h1>{TITLE}</h1>
       <p data-testid={GAME_SCORE}>{gameScore}</p>
       <button
+        disabled={gameOver}
         data-testid={PLAYER_ONE}
         onClick={() => incrementScore(PLAYER_ONE)}
       >
         {PLAYER_ONE}
       </button>
       <button
+        disabled={gameOver}
         data-testid={PLAYER_TWO}
         onClick={() => incrementScore(PLAYER_TWO)}
       >
